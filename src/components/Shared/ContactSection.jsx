@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECRET_TOKEN = "FARMCULT";
-const ALLOWED_ORIGIN = "https://farmcult.com/"; 
+const ALLOWED_ORIGIN = "https://farmcult.com/";
 const PREV_SUBMIT_KEY = "_fc_last_contact";
 const COOLDOWN_MS = 60000;
 
@@ -74,7 +74,7 @@ const ContactSection = () => {
     try {
       setIsSubmitting(true);
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbynyfDL_D2avSkwrrcJ0P5O3-_ONuNgmSiOtkzpU8XlFE1deem-taNXA72zeVjxYgxG/exec",
+        "https://script.google.com/macros/s/AKfycbyJMtLW9mdef4DxzduXG1z0kvhLV4_OE0EVg_umbX8Rey1AjLuUAwMc_d8jd7HN4Ig/exec",
         {
           method: "POST",
           headers: {
@@ -86,6 +86,10 @@ const ContactSection = () => {
 
       const result = await res.json();
       console.log("Response:", result);
+
+      if (result.status === "denied") {
+        throw new Error("Server denied the request. Please check your token, signature, or inputs.");
+      }
 
       localStorage.setItem(PREV_SUBMIT_KEY, Date.now().toString());
       setSuccessMsg("Message sent successfully! We will get back to you soon.");
@@ -210,6 +214,7 @@ const ContactSection = () => {
                       <input
                         name="firstName"
                         type="text"
+                        required
                         className="bg-transparent border-b border-[#DEDEDE] py-2 focus:outline-none focus:border-black transition-colors text-[1.1rem] font-inter text-[#1A1A1A]/60 focus:text-black"
                       />
                     </div>
@@ -220,6 +225,7 @@ const ContactSection = () => {
                       <input
                         name="lastName"
                         type="text"
+                        required
                         className="bg-transparent border-b border-[#DEDEDE] py-2 focus:outline-none focus:border-black transition-colors text-[1.1rem] font-inter text-[#1A1A1A]/60 focus:text-black placeholder:text-[#1A1A1A]/30"
                       />
                     </div>
@@ -232,6 +238,7 @@ const ContactSection = () => {
                         name="email"
                         type="email"
                         placeholder=" "
+                        required
                         className="bg-transparent border-b border-[#DEDEDE] py-2 focus:outline-none focus:border-black transition-colors text-[1.1rem] font-inter text-[#1A1A1A]/60 focus:text-black"
                       />
                     </div>
@@ -242,6 +249,7 @@ const ContactSection = () => {
                       <input
                         name="phone"
                         type="tel"
+                        required
                         className="bg-transparent border-b border-[#DEDEDE] py-2 focus:outline-none focus:border-black transition-colors text-[1.1rem] font-inter text-[#1A1A1A]/60 focus:text-black"
                       />
                     </div>
