@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECRET_TOKEN = "FARMCULT";
-const ALLOWED_ORIGIN = "https://www.farmcult.com/"; // UPDATE THIS BEFORE PRODUCTION
+const ALLOWED_ORIGIN = "https://farmcult.com/"; 
 const PREV_SUBMIT_KEY = "_fc_last_contact";
 const COOLDOWN_MS = 60000;
 
