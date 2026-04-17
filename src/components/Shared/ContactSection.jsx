@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECRET_TOKEN = "FARMCULT";
-const ALLOWED_ORIGIN = "https://farmcult.vercel.app/"; // UPDATE THIS BEFORE PRODUCTION
+const ALLOWED_ORIGIN = "https://www.farmcult.com/"; // UPDATE THIS BEFORE PRODUCTION
 const PREV_SUBMIT_KEY = "_fc_last_contact";
 const COOLDOWN_MS = 60000;
 
@@ -74,7 +74,7 @@ const ContactSection = () => {
     try {
       setIsSubmitting(true);
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbzRhD1hCyyCc5CoY_PVuRpOdfcaQ0amIh1FAUpzMiGMmYc3c5WPxCpw2PjpCpoMMt2y/exec",
+        "https://script.google.com/macros/s/AKfycbynyfDL_D2avSkwrrcJ0P5O3-_ONuNgmSiOtkzpU8XlFE1deem-taNXA72zeVjxYgxG/exec",
         {
           method: "POST",
           headers: {
